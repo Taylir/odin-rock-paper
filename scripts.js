@@ -1,25 +1,26 @@
-const readline = require('readline').createInterface({
-	input: process.stdin,
-	output: process.stdout,
+const rl = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
 });
 
-//readline.question('Please Enter your name: ', name=> {
+//rl.question('Please Enter your name: ', name=> {
 //	console.log(`Hello ${name}`);
-//	readline.close();
+//	rl.close();
 //});
 
 function askForChoice(question) {
-	return new Promise((resolve) => {
-		readline.question(question, option => {
-			resolve(option);
-		});
-	});
-};
+  return new Promise((resolve) => {
+    rl.question(question, (option) => {
+      resolve(option);
+    });
+  });
+}
 
-async function getUserChoice(){
-	const option = await askForChoice('Rock, Paper, Scissors: ');
-	console.log(`You Picked ${option}`);
-	readline.close();
+async function getUserChoice() {
+  const option = await askForChoice("Rock, Paper, Scissors: ");
+  const optionLower = option.toLowerCase();
+  console.log(`You Picked ${optionLower}`);
+  rl.close();
 }
 
 getUserChoice();

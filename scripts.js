@@ -42,8 +42,24 @@ function getRobotChoice() {
 }
 
 async function decideWinner() {
-  console.log(`User Selected ${await getUserChoice()}`);
-  console.log(`Robot Selected ${getRobotChoice()}`);
+  const userInput = await getUserChoice();
+  const robotInput = getRobotChoice();
+  console.log(`Robot has selected ${robotInput}`);
+  if (userInput === robotInput) {
+    console.log("it was a TIE");
+    return 0;
+  } else if (userInput === "p" && robotInput === "r") {
+    console.log("You Won!");
+    return 0;
+  } else if (userInput === "s" && robotInput === "p") {
+    console.log("You Won!");
+    return 0;
+  } else if (userInput === "r" && robotInput === "s") {
+    console.log("You Won!");
+    return 0;
+  } else {
+    console.log("Ai has taken over");
+  }
 }
 
 decideWinner();

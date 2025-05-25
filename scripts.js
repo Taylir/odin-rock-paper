@@ -17,9 +17,16 @@ function askForChoice(question) {
 }
 
 async function getUserChoice() {
-  const option = await askForChoice("Rock, Paper, Scissors: ");
-  const optionLower = option.toLowerCase();
-  console.log(`You Picked ${optionLower}`);
+  let option = "";
+  let count = 0;
+  while ( option !== "r" && option !== "p" && option !== "s") {
+    option = await askForChoice("Rock, Paper, Scissors: ");
+    option = option.toLowerCase().slice(0, 1);
+    ++count;
+    console.log(option);
+    console.log(count);
+  }
+  console.log(`You Picked ${option}`);
   rl.close();
 }
 
